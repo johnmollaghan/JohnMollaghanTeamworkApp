@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">JohnMollaghanTeamworkApp</string>
+
+    <string name="title_activity_project_details">ProjectDetails</string>
+
+    <string name="title_activity_project_list">Projects Viewer</string>
+    <string name="owner">Owner:</string>
+    <string name="assigned_to">Assigned To:</string>
+
+
+</resources>
