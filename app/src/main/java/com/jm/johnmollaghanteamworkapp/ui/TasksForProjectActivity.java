@@ -72,7 +72,7 @@ public class TasksForProjectActivity extends AppCompatActivity {
                 taskListAdapter.notifyDataSetChanged();
             } else {
                 final Snackbar snackbar = Snackbar
-                        .make(findViewById(R.id.app_bar), "Enable to retrieve the Task list right now, please ensure that your device is online.", Snackbar.LENGTH_LONG);
+                        .make(findViewById(R.id.app_bar), getResources().getString(R.string.cannot_retrieve_tasks), Snackbar.LENGTH_LONG);
                 snackbar.show();
             }
             progressBar.setVisibility(GONE);

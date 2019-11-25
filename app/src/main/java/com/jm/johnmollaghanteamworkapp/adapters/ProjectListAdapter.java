@@ -49,6 +49,7 @@ public class ProjectListAdapter extends RecyclerView.Adapter<ProjectListAdapter.
         holder.tvProjectDescription.setText(projects.get(position).getDescription());
         holder.tvProjectStatus.setText(projects.get(position).getStatus());
 
+        // Handle situation where no owner is defined
         if (projects.get(position).getOwner() != null) {
             if (projects.get(position).getOwner().getAvatarUrl() != null) {
                 Glide.with(context).load(projects.get(position).getOwner().getAvatarUrl()).into(holder.ivOwnerAvatar);
@@ -56,6 +57,7 @@ public class ProjectListAdapter extends RecyclerView.Adapter<ProjectListAdapter.
             holder.tvOwnerName.setText(projects.get(position).getOwner().getFullName());
         }
 
+        // Add tags
         holder.chipgroupTags.removeAllViews();
         if (projects.get(position).getTags() != null) {
             for (Tag tag : projects.get(position).getTags()
@@ -67,11 +69,9 @@ public class ProjectListAdapter extends RecyclerView.Adapter<ProjectListAdapter.
             }
         }
 
+        // Show associated Tasks
         holder.itemView.setOnClickListener(v -> {
-            Log.d("JM_LOG", "Item clicked is..." + position);
             Intent intent = new Intent(context, TasksForProjectActivity.class);
-
-            Log.d("JM_LOG", "Project Id = " + projects.get(position).getId());
             intent.putExtra(PROJECT_ID, projects.get(position).getId());
             intent.putExtra(PROJECT_NAME, projects.get(position).getName());
             context.startActivity(intent);
@@ -86,7 +86,6 @@ public class ProjectListAdapter extends RecyclerView.Adapter<ProjectListAdapter.
     }
 
     public class ProjectViewHolder extends RecyclerView.ViewHolder {
-
         final TextView tvProjectName;
         final TextView tvProjectDescription;
         final ImageView ivOwnerAvatar;
@@ -96,7 +95,6 @@ public class ProjectListAdapter extends RecyclerView.Adapter<ProjectListAdapter.
 
         ProjectViewHolder(@NonNull View itemView) {
             super(itemView);
-
             tvProjectName = itemView.findViewById(R.id.tvProjectName);
             tvProjectDescription = itemView.findViewById(R.id.tvProjectDescription);
             ivOwnerAvatar = itemView.findViewById(R.id.ivOwnerAvatar);

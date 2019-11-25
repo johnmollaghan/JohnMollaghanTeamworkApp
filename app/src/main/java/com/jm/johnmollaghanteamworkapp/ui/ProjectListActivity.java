@@ -37,14 +37,11 @@ public class ProjectListActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         progressBar = findViewById(R.id.progressBar);
-
         rvProjects = findViewById(R.id.rvProjects);
-
         projectListViewModel = ViewModelProviders.of(this).get(ProjectListViewModel.class);
 
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(view -> refreshProjectList());
-
 
         refreshProjectList();
     }
@@ -52,7 +49,6 @@ public class ProjectListActivity extends AppCompatActivity {
     private void refreshProjectList() {
 
         progressBar.setVisibility(View.VISIBLE);
-
         projectListViewModel.init();
 
         projectList.clear();
@@ -62,7 +58,7 @@ public class ProjectListActivity extends AppCompatActivity {
                 projectListAdapter.notifyDataSetChanged();
             } else {
                 Snackbar snackbar = Snackbar
-                        .make(findViewById(R.id.app_bar), "Enable to retrieve the Project list right now, please ensure that your device is online.", Snackbar.LENGTH_LONG);
+                        .make(findViewById(R.id.app_bar), getResources().getString(R.string.cannot_retrieve_projects), Snackbar.LENGTH_LONG);
                 snackbar.show();
             }
             progressBar.setVisibility(View.GONE);

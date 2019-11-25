@@ -26,6 +26,10 @@ class TaskListAdapter(private val context: Context, private val tasks: ArrayList
         return TaskViewHolder(view)
     }
 
+
+    /**
+     * Convert the date string from yyyyMMdd format to the medium dtae format for the Locale
+     */
     private fun formatDateToLocale(dateString: String): String {
 
         return try {
@@ -52,6 +56,7 @@ class TaskListAdapter(private val context: Context, private val tasks: ArrayList
         } else {
             holder.tvAssigneeName.text = "??"
         }
+
         holder.pbTaskProgress.progress = tasks[position].progress!!
         holder.tvTaskStatus.text = tasks[position].status
         holder.tvTaskProgress.text = String.format("%s%%", tasks[position].progress!!)
@@ -70,7 +75,7 @@ class TaskListAdapter(private val context: Context, private val tasks: ArrayList
             holder.tvTaskDueDate.text = "??"
         }
 
-
+        // Change icon colour based on value
         when (tasks[position].priority.toString().toLowerCase()) {
             "low" -> holder.ivTaskPriority.setColorFilter(Color.parseColor("#008000"))
             "medium" -> holder.ivTaskPriority.setColorFilter(Color.parseColor("#ffa500"))
@@ -78,8 +83,8 @@ class TaskListAdapter(private val context: Context, private val tasks: ArrayList
             else -> holder.ivTaskPriority.visibility = View.INVISIBLE
         }
 
+        // Add tags
         holder.chipgroupTags.removeAllViews()
-
         if (tasks[position].tags != null) {
             for (tag in tasks[position].tags) {
                 val newChip = Chip(context)
@@ -90,7 +95,6 @@ class TaskListAdapter(private val context: Context, private val tasks: ArrayList
         }
 
     }
-
 
     override fun getItemCount(): Int {
         return tasks.size
@@ -111,7 +115,6 @@ class TaskListAdapter(private val context: Context, private val tasks: ArrayList
         internal var chipgroupTags: ChipGroup
 
         init {
-
             tvTaskDescription = itemView.findViewById(R.id.tvTaskDescription)
             pbTaskProgress = itemView.findViewById(R.id.pbTaskProgress)
             tvTaskProgress = itemView.findViewById(R.id.tvTaskProgress)
@@ -121,7 +124,6 @@ class TaskListAdapter(private val context: Context, private val tasks: ArrayList
             tvTaskStartDate = itemView.findViewById(R.id.tvTaskStartDate)
             tvTaskDueDate = itemView.findViewById(R.id.tvTaskDueDate)
             chipgroupTags = itemView.findViewById(R.id.chipgroupTags)
-
             pbTaskProgress.max = 100
 
         }

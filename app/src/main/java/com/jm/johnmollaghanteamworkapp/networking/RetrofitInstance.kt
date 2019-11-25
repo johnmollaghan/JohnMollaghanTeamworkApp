@@ -18,6 +18,7 @@ object RetrofitInstance {
                 .setLenient()
                 .create()
 
+            // All API calls require the API key (any password can be supplied)
             val client = OkHttpClient.Builder()
                 .addNetworkInterceptor(
                     BasicAuthInterceptor(

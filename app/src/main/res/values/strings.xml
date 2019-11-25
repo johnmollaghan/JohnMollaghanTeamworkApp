@@ -2,10 +2,11 @@
     <string name="app_name">JohnMollaghanTeamworkApp</string>
 
     <string name="title_activity_project_details">ProjectDetails</string>
-
     <string name="title_activity_project_list">Projects Viewer</string>
     <string name="owner">Owner:</string>
     <string name="assigned_to">Assigned To:</string>
 
+    <string name="cannot_retrieve_projects">Enable to retrieve the Projects. Please ensure that your device is online.</string>
+    <string name="cannot_retrieve_tasks">Enable to retrieve the Tasks, please ensure that your device is online.</string>
 
 </resources>
