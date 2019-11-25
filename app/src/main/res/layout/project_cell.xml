@@ -67,7 +67,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/tvProjectName"
                 tools:srcCompat="@tools:sample/avatars[0]"
-                android:contentDescription="TODO" />
+                android:contentDescription="Owner Avatar" />
 
             <TextView
                 android:id="@+id/tvProjectName"
